@@ -1,11 +1,12 @@
-
+import Regester from "./page/Regester";
+import './App.css'
+import Home from "./page/Home";
 
 function App() {
   return (
-    <div className="">
-        <h1 class="text-3xl font-bold underline">
-          Hello world!
-        </h1>
+    <div>
+        {/* <Regester /> */}
+        <Home />
     </div>
   );
 }
