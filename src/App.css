@@ -28,6 +28,13 @@
   color: #61dafb;
 }
 
+.w_component{
+  padding: 10px 10px;
+  max-width: max-content;
+  border-radius: 0px 10px 10px 10px;
+  margin-bottom: 8px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

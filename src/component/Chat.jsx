@@ -19,7 +19,11 @@ const Chat = () => {
                 <img src={more} alt="" className='w-8 h-8 cursor-pointer '/>
             </div>
         </div>
-        <div className='ourMessage h-[80%] p-6 bg-[#ddddf7] overflow-y-scroll'>
+        <div className='ourMessage h-[80%] p-6 bg-[#ddddf7] w-full overflow-y-scroll overflow-x-hidden'>
+            <Message />
+            <Message />
+            <Message />
+            <Message />
             <Message />
         </div>
 

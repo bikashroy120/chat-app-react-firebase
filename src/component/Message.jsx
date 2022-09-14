@@ -1,17 +1,17 @@
-import React from 'react'
-import img from '../img/man.webp'
-import '../App.css'
+import React from "react";
+import img from "../img/man.webp";
+import "../App.css";
 
 const Message = () => {
   return (
-    <div className='flex items-start justify-start gap-2'>
-        <img src={img} alt="" className='w-14 h-14 rounded-full' />
-        <div>
-            <p className='text-[14px] font-normal bg-green-300 w_component'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, maiores maxime reprehenderit perspiciatis vitae natus.</p>
-            {/* <img src={img} alt="" /> */}
-        </div>
+    <div className="flex items-start justify-start gap-2 mb-5 flex-row-reverse">
+      <img src={img} alt="" className="w-14 h-14 rounded-full" />
+      <div className=" w-[350px] ">
+        <h5 className=" bg-blue-300 w_component">hfhfhfhfhhfhfhhfhff sd</h5>
+        <img src={img} alt="" className="w-full h-auto"/>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Message
+export default Message;
