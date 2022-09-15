@@ -5,8 +5,8 @@ import Home from "./page/Home";
 function App() {
   return (
     <div>
-        {/* <Regester /> */}
-        <Home />
+        <Regester />
+        
     </div>
   );
 }
