@@ -4,8 +4,11 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
 import {auth,storage,db} from '../firbase'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore"; 
+import {useNavigate,Link} from "react-router-dom"
 
 const Regester = () => {
+
+  const navigate = useNavigate();
 
   const HandelSubmit = async (e)=>{
       e.preventDefault()
@@ -45,6 +48,10 @@ const Regester = () => {
                 email,
                 photoURL:downloadURL
               });
+
+              await setDoc(doc(db, "userChat", res.user.uid), {})
+
+              navigate('/')
           });
         }
       );
@@ -90,8 +97,8 @@ const Regester = () => {
           </button>
         </form>
 
-        <span className="text-[14px] text-gray-400 flex items-center justify-center gap-1">
-          You do have a acount? <p className=" text-red-300 cursor-pointer">login</p>
+        <span className="text-[14px] text-gray-400 flex items-center justify-center gap-1"> 
+          You do have a acount? <Link to="/login" className=" text-red-300 cursor-pointer">login</Link>
         </span>
       </div>
     </div>
