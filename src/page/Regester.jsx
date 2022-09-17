@@ -1,8 +1,9 @@
 import React from "react";
 import img from "../img/addAvatar.png"
-import { createUserWithEmailAndPassword } from "firebase/auth"
-import {auth,storage} from '../firbase'
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
+import {auth,storage,db} from '../firbase'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore"; 
 
 const Regester = () => {
 
@@ -11,10 +12,11 @@ const Regester = () => {
       const name = e.target[0].value;
       const email = e.target[1].value;
       const password = e.target[2].value;
-      const img = e.target[3].files[0];
+      const file = e.target[3].files[0];
 
 
     try{
+
       const res =await createUserWithEmailAndPassword(auth, email, password);
 
 
@@ -31,8 +33,18 @@ const Regester = () => {
         }, 
         () => {
 
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            console.log('File available at', downloadURL);
+          getDownloadURL(uploadTask.snapshot.ref).then( async(downloadURL) => {
+              await updateProfile(res.user,{
+                  displayName:name,
+                  photoURL:downloadURL
+              })
+
+              await setDoc(doc(db, "user", res.user.uid), {
+                uid:res.user.uid,
+                displayName:name,
+                email,
+                photoURL:downloadURL
+              });
           });
         }
       );
@@ -47,7 +59,7 @@ const Regester = () => {
   return (
     <div className="w-full h-screen bg-orange-300 flex items-center justify-center">
       <div className="flex items-center justify-center flex-col bg-white w-[300px] p-4 py-6 rounded-md shadow-md">
-        <span className="text-[20px]">Bikash Chat</span>
+        <span className="text-[20px]">Lama Chat</span>
         <span className=" text-[14px] text-gray-400">Regester</span>
         <form onSubmit={HandelSubmit} className="flex items-center justify-center flex-col mt-4">
           <input
