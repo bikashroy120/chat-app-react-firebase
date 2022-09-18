@@ -29,17 +29,15 @@ const Search = () => {
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         setUser(doc.data());
-        console.log()
       });
     } catch (err) {
       setErr(true);
     }
   };
 
-  console.log(user)
+
   const HandalKy = (e)=>{
     e.code === "Enter" && handleSearch();
-    console.log(e.code)
   }
 
   const handleSelect = async () => {
